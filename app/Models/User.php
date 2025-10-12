@@ -16,6 +16,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, TwoFactorAuthenticatable, HasUuids;
 
 
+    protected $primaryKey = 'uuid';
     protected $keyType = 'string';
     public $incrementing = false;
     /**
