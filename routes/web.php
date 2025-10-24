@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('situations', 'situations')->name('situations');
     Route::view('cards', 'cards')->name('cards');
-    Route::get('cards/{card}/edit', function (Card $card) {
+    Route::get('cards/{card}/edit', static function (Card $card) {
         return view('edit-card', ['card' => $card]);
     })->name('cards.edit');
     Route::view('users', 'users')->name('users');
