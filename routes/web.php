@@ -12,7 +12,15 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    // Display the user's bingo card; generate cards if none exist
+    Route::get('dashboard', function () {
+        $user = auth()->user();
+        if ($user->cards()->count() === 0) {
+            \App\Facades\CardHelper::generateCards();
+        }
+        $card = $user->cards()->first();
+        return view('dashboard', ['card' => $card]);
+    })->name('dashboard');
 
     Route::view('situations', 'situations')->name('situations');
     Route::view('cards', 'cards')->name('cards');

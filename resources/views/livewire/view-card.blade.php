@@ -1,4 +1,9 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+    @if ($card->bingo_at)
+        <div class="mb-4 bg-green-500 text-white text-center py-2 rounded">
+            BINGO!
+        </div>
+    @endif
     <div class="grid grid-cols-5 gap-2 p-4">
         @foreach ($grid as $index => $cell)
             @php $position = $index + 1; @endphp
@@ -33,6 +38,19 @@
                     </ul>
                 </div>
             @endif
+            @can('update', $card)
+                <div class="mt-4">
+                    <flux:subheading size="sm">Change Situation</flux:subheading>
+                    <select wire:model="selectedSituationUuid" class="mt-2 block w-full border-gray-300 rounded">
+                        @foreach ($allSituations as $uuid => $name)
+                            <option value="{{ $uuid }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="mt-2 flex justify-end">
+                        <flux:button variant="primary" wire:click="changeSituation">Update</flux:button>
+                    </div>
+                </div>
+            @endcan
             <div class="mt-4 flex justify-end space-x-2 rtl:space-x-reverse">
                 <flux:modal.close>
                     <flux:button variant="outline">Close</flux:button>

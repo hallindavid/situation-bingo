@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Card;
+use App\Models\SituationOccurrence;
 use App\Models\User;
 
 class CardPolicy
@@ -36,7 +37,8 @@ class CardPolicy
      */
     public function update(User $user, Card $card): bool
     {
-        return ($user->uuid === $card->user_uuid);
+        return ($user->uuid === $card->user_uuid && SituationOccurrence::count() === 0) ||
+            $user->is_admin;
     }
 
     /**

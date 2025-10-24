@@ -22,10 +22,12 @@ class CardsTable extends TableComponent
             ->query(fn() => Card::query())
             ->defaultPaginationPageOption(50)
             ->columns([
-                TextColumn::make('user.name'),
+                TextColumn::make('user.name')
+                    ->label('User'),
                 TextColumn::make('bingo_at')
                     ->label('Bingo Achieved At')
-                    ->dateTime('bingo_at'),
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->headerActions([
                 Action::make('generateCards')
