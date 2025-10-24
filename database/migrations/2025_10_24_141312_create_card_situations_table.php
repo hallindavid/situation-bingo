@@ -22,7 +22,6 @@ return new class extends Migration {
             $table->foreign('situation_occurrence_uuid')->references('uuid')->on('situation_occurrences')->nullOnDelete();
 
             $table->unique(['card_uuid', 'situation_uuid']);
-            $table->unique(['card_uuid', 'card_position']);
         });
     }
 
