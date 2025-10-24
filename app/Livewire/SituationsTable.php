@@ -56,9 +56,7 @@ class SituationsTable extends TableComponent
                     ->icon('heroicon-o-flag')
                     ->requiresConfirmation("Are you sure you want to report an occurrence for this situation?")
                     ->action(function (Situation $record) {
-                        $record->occurrences()->create([
-                            'reported_by_user_uuid' => auth()->id(),
-                        ]);
+                        situationHelper::recordOccurrence($record);
                     })->color('success'),
                 Action::make('clearOccurrences')
                     ->label('Clear Occurrences')

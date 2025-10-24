@@ -17,16 +17,21 @@ class Card extends Model
 
     protected $primaryKey = 'uuid';
     protected $fillable = [
-        'user_uuid'
+        'user_uuid',
+        'bingo_at',
+    ];
+
+    protected $dates = [
+        'bingo_at'
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_uuid','uuid');
+        return $this->belongsTo(User::class, 'user_uuid', 'uuid');
     }
 
     public function cardSituations(): HasMany
     {
-        return $this->hasMany(CardSituation::class, 'card_uuid','uuid');
+        return $this->hasMany(CardSituation::class, 'card_uuid', 'uuid');
     }
 }

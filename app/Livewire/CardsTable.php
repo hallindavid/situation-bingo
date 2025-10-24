@@ -23,8 +23,9 @@ class CardsTable extends TableComponent
             ->defaultPaginationPageOption(50)
             ->columns([
                 TextColumn::make('user.name'),
-                TextColumn::make('uuid')
-                    ->label('Uuid'),
+                TextColumn::make('bingo_at')
+                    ->label('Bingo Achieved At')
+                    ->dateTime('bingo_at'),
             ])
             ->headerActions([
                 Action::make('generateCards')
@@ -32,11 +33,16 @@ class CardsTable extends TableComponent
                     ->action('generateCards'),
             ])
             ->recordActions([
+                Action::make('viewCard')
+                    ->label('View')
+                    ->icon('heroicon-o-eye')
+                    ->authorize('view')
+                    ->url(fn(Card $record): string => route('cards.view', $record)),
                 Action::make('editCard')
                     ->label('Edit')
                     ->icon('heroicon-o-pencil')
                     ->authorize('update')
-                    ->url(fn (Card $record): string => route('cards.edit', $record)),
+                    ->url(fn(Card $record): string => route('cards.edit', $record)),
             ]);
     }
 

@@ -136,6 +136,7 @@ return [
     */
     'aliases' => Facade::defaultAliases()->merge([
         'CardHelper' => App\Facades\CardHelper::class,
+        'SituationHelper' => App\Facades\SituationHelper::class,
     ])->toArray(),
 
 ];

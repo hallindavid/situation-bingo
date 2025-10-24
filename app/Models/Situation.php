@@ -44,4 +44,6 @@ class Situation extends Model
     {
         return $this->hasMany(SituationOccurrence::class, 'situation_uuid', 'uuid');
     }
+
+
 }

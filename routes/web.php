@@ -16,9 +16,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('situations', 'situations')->name('situations');
     Route::view('cards', 'cards')->name('cards');
+
     Route::get('cards/{card}/edit', static function (Card $card) {
         return view('edit-card', ['card' => $card]);
     })->name('cards.edit');
+
+    Route::get('cards/{card}', static function (Card $card) {
+        return view('view-card', ['card' => $card]);
+    })->name('cards.view');
+
     Route::view('users', 'users')->name('users');
 
     Route::redirect('settings', 'settings/profile');
