@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Facades\CardHelper;
 use App\Models\Card;
 use App\Models\CardSituation;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
@@ -48,11 +50,23 @@ class CardSituationsTable extends TableComponent
                     ->label('Situation')
                     ->searchable(),
             ])
+            ->headerActions([
+                Action::make('resetCard')
+                    ->label('Reset Card')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->action(fn() => $this->resetCard()),
+                Action::make('generateSituations')
+                    ->label('Generate Situations')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->action(fn() => $this->generateSituations()),
+            ])
             ->recordActions([
                 EditAction::make()
                     ->label('Edit')
                     ->icon('heroicon-o-pencil')
-                    ->form([
+                    ->schema([
                         Select::make('situation_uuid')
                             ->label('Situation')
                             ->relationship('situation', 'name')
@@ -93,11 +107,31 @@ class CardSituationsTable extends TableComponent
         $caseStatement = implode(' ', $cases);
 
         DB::table('card_situations')
+            ->where('card_uuid', $this->cardUuid)
             ->whereIn('uuid', $uuids)
             ->update([
                 'card_position' => DB::raw("CASE `uuid` {$caseStatement} END"),
             ]);
     }
+
+    /**
+     * Clear all situation assignments for this card.
+     */
+    public function resetCard(): void
+    {
+        $card = Card::findOrFail($this->cardUuid);
+        CardHelper::clearSituationsForCard($card);
+    }
+
+    /**
+     * Generate situation assignments for this card.
+     */
+    public function generateSituations(): void
+    {
+        $card = Card::findOrFail($this->cardUuid);
+        CardHelper::generateSituationsForCard($card);
+    }
+
 
     public function render(): View
     {

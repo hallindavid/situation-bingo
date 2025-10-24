@@ -6,7 +6,6 @@ use App\Models\Card;
 use App\Models\CardSituation;
 use App\Models\Situation;
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
 
 class CardHelper
 {
@@ -47,6 +46,11 @@ class CardHelper
             }
 
         });
+    }
+
+    public function clearSituationsForCard(Card $card): void
+    {
+        $card->cardSituations()->update(['situation_uuid' => null]);
     }
 
     public function generateSituationsForCard(Card $card): void
