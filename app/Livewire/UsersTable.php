@@ -36,12 +36,11 @@ class UsersTable extends TableComponent
                 TextColumn::make('card_uuid')
                     ->label('Card')
                     ->formatStateUsing(fn (mixed $state): string =>
-                        filled($state) ? 'View Card' : ''
+                        filled($state)
+                            ? '<a href="' . route('cards.view', $state) . '" class="text-blue-600 hover:underline">View Card</a>'
+                            : ''
                     )
-                    ->url(fn (mixed $state): ?string =>
-                        filled($state) ? route('cards.view', $state) : null
-                    )
-                    ->openUrlInNewTab(false),
+                    ->html(),
                 IconColumn::make('is_admin')
                     ->label('Administrator')
                     ->boolean()

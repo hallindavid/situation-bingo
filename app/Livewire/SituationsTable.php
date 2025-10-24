@@ -2,12 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Facades\SituationHelper;
 use App\Models\Situation;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\TableComponent;
@@ -35,16 +35,26 @@ class SituationsTable extends TableComponent
             ->headerActions([
                 CreateAction::make()
                     ->label('Create Situation')
+                    ->color('primary')
                     ->schema([
                         TextInput::make('name')
                             ->label('Name')
                             ->required()
                             ->unique(),
                     ]),
+
+                Action::make('resetSituations')
+                    ->visible(fn(): bool => auth()->user()->is_admin)
+                    ->label('Reset Situations')
+                    ->requiresConfirmation("Are you sure you want to reset all situations? This will delete all occurrences.")
+                    ->action(function () {
+                        SituationHelper::resetAllOccurrences();
+                    })->color('danger'),
             ])
             ->recordActions([
                 EditAction::make()
                     ->label('Edit')
+                    ->visible(fn(): bool => auth()->user()->is_admin)
                     ->schema([
                         TextInput::make('name')
                             ->label('Name')
@@ -56,10 +66,11 @@ class SituationsTable extends TableComponent
                     ->icon('heroicon-o-flag')
                     ->requiresConfirmation("Are you sure you want to report an occurrence for this situation?")
                     ->action(function (Situation $record) {
-                        situationHelper::recordOccurrence($record);
+                        SituationHelper::recordOccurrence($record);
                     })->color('success'),
                 Action::make('clearOccurrences')
                     ->label('Clear Occurrences')
+                    ->visible(fn(): bool => auth()->user()->is_admin)
                     ->icon('heroicon-o-trash')
                     ->requiresConfirmation("Are you sure you want to delete all of the occurrences for this situation?")
                     ->action(function (Situation $record) {

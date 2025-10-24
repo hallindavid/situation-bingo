@@ -5,10 +5,20 @@ namespace App\Helpers;
 use App\Models\Card;
 use App\Models\CardSituation;
 use App\Models\Situation;
+use App\Models\SituationOccurrence;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class SituationHelper
 {
+
+    public function resetAllOccurrences(): void
+    {
+        DB::table('cards')->update(['bingo_at' => null]);
+        DB::table('card_situations')->update(['situation_occurrence_uuid' => null]);
+        DB::table('situation_occurrences')->delete();
+    }
+
     public function recordOccurrence(Situation $situation): void
     {
         $occurrence = $situation->occurrences()->create([

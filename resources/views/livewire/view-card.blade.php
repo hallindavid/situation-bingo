@@ -37,8 +37,9 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @else
             @can('update', $card)
+
                 <div class="mt-4">
                     <flux:subheading size="sm">Change Situation</flux:subheading>
                     <select wire:model="selectedSituationUuid" class="mt-2 block w-full border-gray-300 rounded">
@@ -51,6 +52,7 @@
                     </div>
                 </div>
             @endcan
+            @endif
             <div class="mt-4 flex justify-end space-x-2 rtl:space-x-reverse">
                 <flux:modal.close>
                     <flux:button variant="outline">Close</flux:button>
