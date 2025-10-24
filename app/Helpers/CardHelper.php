@@ -4,11 +4,12 @@ namespace App\Helpers;
 
 use App\Models\Card;
 use App\Models\CardSituation;
-use App\Models\User;
 use App\Models\Situation;
+use App\Models\User;
 
 class CardHelper
 {
+
     /**
      * Generate bingo cards.
      *

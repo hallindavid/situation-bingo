@@ -16,6 +16,6 @@ class CardHelper extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return \App\Helpers\CardHelper::class;
+        return 'cardHelper';
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -39,7 +41,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -132,8 +134,8 @@ return [
     | registered when the application starts. Feel free to add your own.
     |
     */
-    'aliases' => [
+    'aliases' => Facade::defaultAliases()->merge([
         'CardHelper' => App\Facades\CardHelper::class,
-    ],
+    ])->toArray(),
 
 ];

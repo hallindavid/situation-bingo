@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Situation;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use CardHelper;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,11 +25,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'David Hallin',
             'email' => 'dave@test.com',
-            'password'=> Hash::make('password')
+            'password' => Hash::make('password')
         ]);
 
-
-
+        CardHelper::generateCards();
 
     }
 }
