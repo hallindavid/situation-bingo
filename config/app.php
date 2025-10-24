@@ -123,4 +123,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | The aliases array provides a list of class aliases that will be
+    | registered when the application starts. Feel free to add your own.
+    |
+    */
+    'aliases' => [
+        'CardHelper' => App\Facades\CardHelper::class,
+    ],
+
 ];

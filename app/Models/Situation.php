@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Database\Factories\SituationFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,4 +21,20 @@ class Situation extends Model
     protected $fillable = [
         'name'
     ];
+    /**
+     * Scope a query to situations not yet assigned to the given card.
+     *
+     * @param Builder $query
+     * @param Card $card
+     * @return Builder
+     */
+    public function scopeAvailableForCard(Builder $query, Card $card): Builder
+    {
+        return $query->whereNotIn('uuid', function ($sub) use ($card) {
+            $sub->select('situation_uuid')
+                ->from('card_situations')
+                ->where('card_uuid', $card->uuid)
+                ->whereNotNull('situation_uuid');
+        });
+    }
 }

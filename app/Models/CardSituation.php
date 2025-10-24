@@ -16,7 +16,8 @@ class CardSituation extends Model
     protected $fillable = [
         'card_uuid',
         'situation_uuid',
-        'card_position'
+        'card_position',
+        'situation_occurrence_uuid',
     ];
 
     public function card(): BelongsTo
@@ -27,5 +28,10 @@ class CardSituation extends Model
     public function situation(): BelongsTo
     {
         return $this->belongsTo(Situation::class, 'situation_uuid', 'uuid');
+    }
+
+    public function situation_occurrence(): BelongsTo
+    {
+        return $this->belongsTo(SituationOccurrence::class, 'situation_occurrence_uuid', 'uuid');
     }
 }
