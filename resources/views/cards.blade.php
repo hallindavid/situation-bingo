@@ -1,5 +1,5 @@
-<x-layouts.app :title="__('Dashboard')">
+<x-layouts.app :title="__('Cards')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-        This is where my card will show up
+        <livewire:cards-table/>
     </div>
 </x-layouts.app>

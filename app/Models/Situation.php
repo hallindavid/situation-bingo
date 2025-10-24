@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Situation extends Model
 {
@@ -21,6 +22,7 @@ class Situation extends Model
     protected $fillable = [
         'name'
     ];
+
     /**
      * Scope a query to situations not yet assigned to the given card.
      *
@@ -36,5 +38,10 @@ class Situation extends Model
                 ->where('card_uuid', $card->uuid)
                 ->whereNotNull('situation_uuid');
         });
+    }
+
+    public function occurrences(): HasMany
+    {
+        return $this->hasMany(SituationOccurrence::class, 'situation_uuid', 'uuid');
     }
 }

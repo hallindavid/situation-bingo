@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Models\CardSituation;
 use App\Models\Situation;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class CardHelper
 {
@@ -15,7 +16,7 @@ class CardHelper
      *
      * @return mixed
      */
-    public function generateCards()
+    public function generateCards(): void
     {
         // In this function, we want to make sure that every registered user has a bingo card.
 
