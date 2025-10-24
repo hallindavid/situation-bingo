@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('situation_occurrences', function (Blueprint $table) {
+        Schema::create('situation_occurrences', static function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->foreignUuid('situation_uuid')->references('uuid')->on('situations')->cascadeOnDelete();
             $table->foreignUuid('reported_by_user_uuid')->nullable()->references('uuid')->on('users')->nullOnDelete();

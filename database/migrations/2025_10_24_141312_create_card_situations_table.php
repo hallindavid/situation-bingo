@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('card_situations', function (Blueprint $table) {
+        Schema::create('card_situations', static function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->uuid('card_uuid');
             $table->unsignedTinyInteger('card_position');
@@ -19,6 +19,7 @@ return new class extends Migration {
 
             $table->foreign('card_uuid')->references('uuid')->on('cards')->cascadeOnDelete();
             $table->foreign('situation_uuid')->references('uuid')->on('situations')->nullOnDelete();
+            $table->foreign('situation_occurrence_uuid')->references('uuid')->on('situation_occurrences')->nullOnDelete();
 
             $table->unique(['card_uuid', 'situation_uuid']);
             $table->unique(['card_uuid', 'card_position']);
