@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Facades\CardHelper;
 use App\Models\User;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
