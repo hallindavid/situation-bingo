@@ -45,7 +45,7 @@
             </a>
 
 
-            <a href="https://www.crowd.live/TRWZZ"
+            <a href="https://www.crowd.live/GPTLL"
                class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent"
                data-flux-navlist-item="data-flux-navlist-item">
                 <div class="relative">
