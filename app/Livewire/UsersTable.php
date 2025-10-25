@@ -42,6 +42,10 @@ class UsersTable extends TableComponent
                             : ''
                     )
                     ->html(),
+                IconColumn::make('bingo_at')
+                    ->label('Bingo')
+                    ->boolean()
+                    ->sortable(),
                 IconColumn::make('is_admin')
                     ->label('Administrator')
                     ->boolean()

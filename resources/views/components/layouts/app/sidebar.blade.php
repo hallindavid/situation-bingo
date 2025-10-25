@@ -18,10 +18,53 @@
 
             <flux:navlist.item icon="calendar" :href="route('situations')" :current="request()->routeIs('situations')"
                                wire:navigate>{{ __('Situations') }}</flux:navlist.item>
-{{--            <flux:navlist.item icon="hashtag" :href="route('cards')" :current="request()->routeIs('cards')"--}}
-{{--                               wire:navigate>{{ __('Cards') }}</flux:navlist.item>--}}
+            {{--            <flux:navlist.item icon="hashtag" :href="route('cards')" :current="request()->routeIs('cards')"--}}
+            {{--                               wire:navigate>{{ __('Cards') }}</flux:navlist.item>--}}
             <flux:navlist.item icon="users" :href="route('users')" :current="request()->routeIs('users')"
                                wire:navigate>{{ __('Players') }}</flux:navlist.item>
+        </flux:navlist.group>
+
+
+        <flux:navlist.group :heading="__('Other Links')" class="grid">
+            <a href="https://music.apple.com/ca/playlist/karens-party-mix/pl.u-gxblk87s6AzK7"
+               class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent"
+               data-flux-navlist-item="data-flux-navlist-item">
+                <div class="relative">
+                    <svg class="shrink-0 [:where(&amp;)]:size-6 size-4!" data-flux-icon="" data-slot="icon" fill="none"
+                         stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"></path>
+                    </svg>
+                </div>
+
+                <div
+                    class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block"
+                    data-content="">Karen's Party Mix
+                </div>
+            </a>
+
+
+            <a href="https://www.crowd.live/TRWZZ"
+               class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent"
+               data-flux-navlist-item="data-flux-navlist-item">
+                <div class="relative">
+                    <svg class="shrink-0 [:where(&amp;)]:size-6 size-4!" data-flux-icon="" data-slot="icon" fill="none"
+                         stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643 48.39 48.39 0 0 1-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63 48.05 48.05 0 0 0 .582-4.717.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663 48.422 48.422 0 0 0-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 0 1-.61-.58v0Z"></path>
+                    </svg>
+
+                </div>
+
+                <div
+                    class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block"
+                    data-content="">Party Trivia
+                </div>
+            </a>
+
+
         </flux:navlist.group>
     </flux:navlist>
 
