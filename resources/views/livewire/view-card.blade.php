@@ -4,24 +4,18 @@
             BINGO!
         </div>
     @endif
-    <div class="grid grid-cols-5 gap-2 p-4">
+    <div class="grid grid-cols-4 gap-2 p-4">
         @foreach ($grid as $index => $cell)
             @php $position = $index + 1; @endphp
-            @if ($position === 13)
-                <div class="h-24 border border-gray-300 flex items-center justify-center bg-green-200">
+            <flux:modal.trigger name="situation-modal">
+                <button type="button"
+                        class="h-24 border border-gray-300 flex items-center justify-center cursor-pointer {{ $cell['marked'] ? 'bg-green-200' : '' }}"
+                        wire:click="openModal({{ $position }})"
+                        x-data=""
+                        x-on:click.prevent="$dispatch('open-modal','situation-modal')">
                     {{ $cell['label'] }}
-                </div>
-            @else
-                <flux:modal.trigger name="situation-modal">
-                    <button type="button"
-                            class="h-24 border border-gray-300 flex items-center justify-center cursor-pointer {{ $cell['marked'] ? 'bg-green-200' : '' }}"
-                            wire:click="openModal({{ $position }})"
-                            x-data=""
-                            x-on:click.prevent="$dispatch('open-modal','situation-modal')">
-                        {{ $cell['label'] }}
-                    </button>
-                </flux:modal.trigger>
-            @endif
+                </button>
+            </flux:modal.trigger>
         @endforeach
     </div>
 

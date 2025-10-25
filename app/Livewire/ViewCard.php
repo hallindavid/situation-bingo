@@ -20,12 +20,7 @@ class ViewCard extends Component
     public Card $card;
 
     /**
-     * A 5x5 grid of situation titles (including free space).
-     *
-     * @var string[]
-     */
-    /**
-     * The grid of cells: each ['label' => string, 'marked' => bool].
+     * A 4x4 grid of situation titles.
      *
      * @var array<int, array{label:string,marked:bool}>
      */
@@ -81,15 +76,8 @@ class ViewCard extends Component
 
         // Map situations by position
         $map = $this->card->cardSituations->keyBy('card_position');
-        // Build 5x5 grid, skipping position 13 (free space)
-        for ($i = 1; $i <= 25; $i++) {
-            if ($i === 13) {
-                $this->grid[] = [
-                    'label' => 'Free Space',
-                    'marked' => true,
-                ];
-                continue;
-            }
+        // Build 4x4 grid
+        for ($i = 1; $i <= 16; $i++) {
             $cs = $map->get($i);
             $label = $cs?->situation->name ?? '';
             $marked = $cs?->situation_occurrence_uuid !== null;
@@ -105,9 +93,6 @@ class ViewCard extends Component
      */
     public function openModal(int $position): void
     {
-        if ($position === 13) {
-            return;
-        }
         $map = $this->card->cardSituations->keyBy('card_position');
         $cs = $map->get($position);
         if (!$cs || !$cs->situation) {

@@ -28,11 +28,7 @@ class CardHelper
         });
 
         Card::all()->each(function (Card $card) {
-            for ($i = 1; $i <= 25; $i++) {
-                if ($i === 13) {
-                    // free space
-                    continue;
-                }
+            for ($i = 1; $i <= 16; $i++) {
 
                 if ($card->cardSituations()->where('card_position', $i)->count() === 0) {
                     // If the card situation doesn't exist, create it with null values.

@@ -40,20 +40,18 @@ class SituationHelper
      */
     public function markCardsWithBingo(): Collection
     {
-        // Winning lines by card_position (5x5 grid, free space at 13)
+        // Winning lines by card_position (4x4 grid)
         $lines = [
-            [1, 2, 3, 4, 5],
-            [6, 7, 8, 9, 10],
-            [11, 12, 13, 14, 15],
-            [16, 17, 18, 19, 20],
-            [21, 22, 23, 24, 25],
-            [1, 6, 11, 16, 21],
-            [2, 7, 12, 17, 22],
-            [3, 8, 13, 18, 23],
-            [4, 9, 14, 19, 24],
-            [5, 10, 15, 20, 25],
-            [1, 7, 13, 19, 25],
-            [5, 9, 13, 17, 21],
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12],
+            [13, 14, 15, 16],
+            [1, 5, 9, 13],
+            [2, 6, 10, 14],
+            [3, 7, 11, 15],
+            [4, 8, 12, 16],
+            [1, 6, 11, 16],
+            [4, 7, 10, 13],
         ];
 
         $cards = Card::with('cardSituations')->whereNull('bingo_at')->get();
@@ -61,12 +59,8 @@ class SituationHelper
         return $cards->filter(function (Card $card) use ($lines) {
             $map = [];
             foreach ($card->cardSituations as $cs) {
-                $map[$cs->card_position] =
-                    ($cs->situation_occurrence_uuid !== null) ||
-                    ($cs->card_position === 13);
+                $map[$cs->card_position] = ($cs->situation_occurrence_uuid !== null);
             }
-            // Ensure free center is always true
-            $map[13] = true;
 
             foreach ($lines as $line) {
                 foreach ($line as $pos) {
