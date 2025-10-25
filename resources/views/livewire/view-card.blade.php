@@ -1,4 +1,4 @@
-<div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+<div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl text-xs md:text-base">
     @if ($card->bingo_at)
         <div class="mb-4 bg-green-500 text-white text-center py-2 rounded">
             BINGO!
@@ -9,7 +9,7 @@
             @php $position = $index + 1; @endphp
             <flux:modal.trigger name="situation-modal">
                 <button type="button"
-                        class="h-24 border border-gray-300 flex items-center justify-center cursor-pointer {{ $cell['marked'] ? 'bg-green-200' : '' }}"
+                        class="h-24 border border-gray-300 flex items-center justify-center text-xs md:text-base cursor-pointer {{ $cell['marked'] ? 'bg-green-200' : '' }}"
                         wire:click="openModal({{ $position }})"
                         x-data=""
                         x-on:click.prevent="$dispatch('open-modal','situation-modal')">
