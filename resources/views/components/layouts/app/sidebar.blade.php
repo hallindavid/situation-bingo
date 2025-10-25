@@ -64,6 +64,26 @@
                 </div>
             </a>
 
+            <a href="https://photos.google.com/share/AF1QipMgYtUgvHaS6G7cW9dvy-vwEQTUL7pp41g__toR_2QGt_iBrH72_uqnxtJ5YNOoWw?key=dW9JbHdIY1E5OTZ6dWV2WWg1MTlDbVF6dGtXLXlR"
+               class="h-10 lg:h-8 relative flex items-center gap-3 rounded-lg  py-0 text-start w-full px-3 my-px text-zinc-500 dark:text-white/80 data-current:text-(--color-accent-content) hover:data-current:text-(--color-accent-content) data-current:bg-white dark:data-current:bg-white/[7%] data-current:border data-current:border-zinc-200 dark:data-current:border-transparent hover:text-zinc-800 dark:hover:text-white dark:hover:bg-white/[7%] hover:bg-zinc-800/5  border border-transparent"
+               data-flux-navlist-item="data-flux-navlist-item">
+                <div class="relative">
+                    <svg class="shrink-0 [:where(&amp;)]:size-6 size-4!" data-flux-icon="" data-slot="icon" fill="none"
+                         stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                    </svg>
+
+
+                </div>
+
+                <div
+                    class="flex-1 text-sm font-medium leading-none whitespace-nowrap [[data-nav-footer]_&amp;]:hidden [[data-nav-sidebar]_[data-nav-footer]_&amp;]:block"
+                    data-content="">Google Photos Album
+                </div>
+            </a>
+
 
         </flux:navlist.group>
     </flux:navlist>
